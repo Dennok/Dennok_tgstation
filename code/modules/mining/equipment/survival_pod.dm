@@ -72,6 +72,11 @@
 	desc = "An exorbitantly expensive luxury suite stored within a pocket of bluespace."
 	template_id = "shelter_beta"
 
+/obj/item/survivalcapsule/RnD
+	name = "bluespace RnD capsule"
+	desc = "An exorbitantly expensive RnD stored within a pocket of bluespace."
+	template_id = "shelter_RnD"
+
 //Pod objects
 
 //Window

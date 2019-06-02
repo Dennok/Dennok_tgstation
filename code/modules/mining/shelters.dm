@@ -58,3 +58,14 @@
 	. = ..()
 	whitelisted_turfs = typecacheof(/turf/closed/mineral)
 	banned_objects = typecacheof(/obj/structure/stone_tile)
+
+/datum/map_template/shelter/RnD
+	name = "Shelter RnD"
+	shelter_id = "shelter_RnD"
+	description = "Someone can say that this is ripped out part of the station, and he will be right."
+	mappath = "_maps/templates/shelter_RnD.dmm"
+
+/datum/map_template/shelter/RnD/New()
+	. = ..()
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
