@@ -281,14 +281,10 @@
 	if(job)
 		add_overlays += mutable_appearance(icon, "id[job]")
 	add_overlay(add_overlays)
-	update_in_wallet(add_overlays)
-
-/obj/item/card/id/proc/update_in_wallet(overlays)
 	if(istype(loc, /obj/item/storage/wallet))
 		var/obj/item/storage/wallet/powergaming = loc
 		if(powergaming.front_id == src)
-			powergaming.update_label()
-			powergaming.update_icon(overlays)
+			powergaming.update_icon(add_overlays)
 
 /obj/item/card/id/proc/get_cached_flat_icon()
 	if(!cached_flat_icon)
@@ -309,8 +305,8 @@ update_label()
 
 /obj/item/card/id/proc/update_label()
 	var/blank = !registered_name
-	name = "[blank ? id_type_name : "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
 	update_icon(blank)
+	name = "[blank ? id_type_name : "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
 
 /obj/item/card/id/silver
 	name = "silver identification card"
