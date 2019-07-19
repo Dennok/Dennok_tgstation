@@ -9,7 +9,6 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/list/mobile = list()
 	var/list/stationary = list()
-	var/list/beacons = list()
 	var/list/transit = list()
 
 	var/list/transit_requesters = list()
