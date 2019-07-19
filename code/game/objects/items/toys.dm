@@ -868,7 +868,7 @@
 
 /obj/item/toy/cards/singlecard
 	name = "card"
-	desc = "A playing card used to play card games like poker."
+	desc = "a card"
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "singlecard_down_nanotrasen"
 	w_class = WEIGHT_CLASS_TINY
