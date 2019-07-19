@@ -2125,7 +2125,7 @@
 /area/chapel/office)
 "afQ" = (
 /turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "afR" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -2675,7 +2675,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "ahe" = (
 /obj/structure/chair{
 	dir = 1
@@ -6020,7 +6020,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aqn" = (
 /obj/machinery/status_display,
 /turf/closed/wall,
@@ -6046,7 +6046,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aqr" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -7086,7 +7086,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "asE" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -7149,7 +7149,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "asO" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -7178,7 +7178,7 @@
 "asR" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "asS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
@@ -7268,7 +7268,7 @@
 "atc" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "atd" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -7834,7 +7834,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aus" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -8580,7 +8580,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "awd" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -8695,7 +8695,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "awr" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -8791,7 +8791,7 @@
 /obj/item/stack/cable_coil/five,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "awD" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
@@ -8901,7 +8901,7 @@
 /area/hallway/primary/central)
 "awP" = (
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "awQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,
 /turf/open/floor/plasteel,
@@ -11552,7 +11552,7 @@
 "aDd" = (
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aDe" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Starboard Aux Solar Access";
@@ -11560,7 +11560,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aDg" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -12641,7 +12641,7 @@
 /area/science/research)
 "aFz" = (
 /turf/closed/wall,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "aFA" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/o2{
@@ -24418,7 +24418,7 @@
 /area/engine/atmos)
 "big" = (
 /turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "bih" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Aft Solar Access";
@@ -24426,10 +24426,10 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/maintenance/aft)
 "bii" = (
 /turf/closed/wall,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "bij" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
@@ -24514,7 +24514,7 @@
 "biA" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "biB" = (
 /obj/machinery/vending/wallmed{
 	pixel_y = -28
@@ -24783,7 +24783,7 @@
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "bjb" = (
 /obj/structure/table,
 /obj/item/tape/random,
@@ -28666,7 +28666,7 @@
 /obj/item/stack/cable_coil,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
@@ -28684,7 +28684,7 @@
 /area/engine/atmos)
 "brE" = (
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brG" = (
 /obj/machinery/disposal/bin,
 /obj/effect/turf_decal/tile/yellow{
@@ -28708,7 +28708,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -28717,7 +28717,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
@@ -28729,7 +28729,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brK" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Air to Ports"
@@ -28803,7 +28803,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brU" = (
 /obj/machinery/light{
 	dir = 1
@@ -28826,7 +28826,7 @@
 /obj/machinery/light/small,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brW" = (
 /obj/machinery/power/solar_control{
 	dir = 8;
@@ -28835,7 +28835,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "brX" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -45398,9 +45398,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"cuS" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "cvc" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{
 	dir = 4
@@ -45459,9 +45456,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"cAS" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "cBU" = (
 /obj/machinery/computer/security/telescreen/ce{
 	dir = 1;
@@ -45681,10 +45675,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engine/engine_room)
-"drU" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
 "dtX" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 4
@@ -45755,10 +45745,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
-"dTN" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
 "dUa" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -45883,9 +45869,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
-"emV" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "enD" = (
 /obj/machinery/light/small{
 	brightness = 3;
@@ -45943,9 +45926,6 @@
 	icon_state = "panelscorched"
 	},
 /area/maintenance/department/crew_quarters/bar)
-"erH" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "esb" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -46179,9 +46159,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_room/external)
-"eWP" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "eXR" = (
 /obj/structure/closet/secure_closet/hop,
 /obj/machinery/light/small{
@@ -46467,9 +46444,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"gcQ" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "gdD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
@@ -47021,10 +46995,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_room/external)
-"iaL" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
 "ibd" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced,
@@ -47033,7 +47003,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/space/nearstation)
 "ibF" = (
 /obj/machinery/power/apc{
 	areastring = "/area/lawoffice";
@@ -47134,9 +47104,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/janitor)
-"ivl" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "ixd" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
@@ -47286,7 +47253,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/space)
 "jdu" = (
 /obj/structure/closet/radiation,
 /turf/open/floor/plasteel/dark,
@@ -47424,9 +47391,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
-"jJr" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "jJz" = (
 /obj/machinery/photocopier,
 /obj/item/radio/intercom{
@@ -47721,9 +47685,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/departure_lounge)
-"lcm" = (
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
 "leE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -48288,9 +48249,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/mixing)
-"nku" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "nkG" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -48628,9 +48586,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"omk" = (
-/turf/closed/wall,
-/area/maintenance/solars/starboard/fore)
 "oms" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -48684,7 +48639,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/space)
 "osG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 10
@@ -48793,9 +48748,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"oKk" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "oKN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -48848,10 +48800,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_room/external)
-"oVt" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
 "oVG" = (
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/ai_monitored/turret_protected/ai";
@@ -48905,9 +48853,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/port)
-"pfn" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "pgT" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "External Gas to Loop"
@@ -49048,18 +48993,12 @@
 "pBI" = (
 /turf/open/floor/plasteel/kitchen_coldroom/freezerfloor,
 /area/crew_quarters/kitchen/coldroom)
-"pCB" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "pGQ" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
 	},
 /turf/closed/wall/r_wall,
 /area/engine/supermatter)
-"pGR" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "pGU" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable,
@@ -49128,9 +49067,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/port)
-"pUc" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "pWc" = (
 /obj/machinery/camera/motion{
 	c_tag = "Secure - Captain's Office External";
@@ -49411,9 +49347,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"qUz" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "qWm" = (
 /obj/structure/closet/emcloset,
 /obj/structure/cable,
@@ -49610,18 +49543,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/service)
-"rSF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
-	},
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
 "rTb" = (
 /obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/plating,
@@ -49637,7 +49558,7 @@
 	layer = 2.9
 	},
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/space/nearstation)
 "rUR" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
@@ -50040,9 +49961,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/janitor)
-"toV" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "tpd" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden/layer1{
 	dir = 5
@@ -50366,7 +50284,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/fore)
+/area/solar/starboard)
 "uwG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 9
@@ -50519,9 +50437,6 @@
 /obj/machinery/suit_storage_unit/engine,
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_room/external)
-"uZF" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "vbr" = (
 /obj/machinery/power/emitter/anchored{
 	dir = 4;
@@ -50705,9 +50620,6 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness)
-"vyy" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "vyZ" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -50805,9 +50717,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"vMz" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "vMB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -50906,17 +50815,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/department/security)
-"wiP" = (
-/turf/closed/wall,
-/area/maintenance/solars/starboard/aft)
 "wjh" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/engine/engine_room)
-"wkD" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/fore)
 "wkM" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -51071,9 +50974,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/supermatter)
-"wBj" = (
-/turf/closed/wall/r_wall,
-/area/maintenance/solars/starboard/aft)
 "wCc" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/prison";
@@ -51284,7 +51184,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "xtN" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -51292,18 +51192,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
-"xuI" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
 "xve" = (
 /obj/machinery/power/apc{
 	areastring = "/area/science/mixing";
@@ -51364,7 +51252,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/maintenance/solars/starboard/aft)
+/area/solar/aft)
 "xGM" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/stripes/line{
@@ -92829,11 +92717,11 @@ bhQ
 biO
 bik
 bpr
-emV
-emV
-emV
-emV
-emV
+big
+big
+big
+big
+big
 cau
 bXv
 ces
@@ -93086,11 +92974,11 @@ bia
 aOp
 bXv
 bpK
-emV
+big
 xrC
 brC
 brT
-emV
+big
 aAc
 aAc
 aAc
@@ -93344,10 +93232,10 @@ aOp
 bXv
 biu
 bih
-dTN
-lcm
+biA
+brE
 brV
-emV
+big
 aaa
 aaa
 bix
@@ -93600,11 +93488,11 @@ aPb
 aOp
 bXv
 biu
-emV
-lcm
-dTN
+big
+brE
+biA
 brW
-emV
+big
 aaa
 aaa
 bix
@@ -93857,11 +93745,11 @@ bjM
 aOp
 bXv
 biu
-emV
-xuI
+big
+bja
 brH
-xuI
-emV
+bja
+big
 aaa
 aal
 bix
@@ -94114,9 +94002,9 @@ bjN
 aOp
 bsC
 biu
-wiP
-ibd
-dTN
+bii
+brI
+biA
 ibd
 aaa
 aaa
@@ -94371,8 +94259,8 @@ bgr
 aOp
 bZs
 biu
-wiP
-rUx
+bii
+brJ
 xFo
 rUx
 aaa
@@ -96611,11 +96499,11 @@ aIV
 bQE
 asj
 asj
-wkD
-wkD
-wkD
-wkD
-wkD
+afQ
+afQ
+afQ
+afQ
+afQ
 bdy
 aNV
 asj
@@ -96868,7 +96756,7 @@ aaa
 aaa
 aal
 aal
-wkD
+afQ
 ahd
 asN
 awC
@@ -97125,10 +97013,10 @@ aaa
 aal
 aal
 aaa
-wkD
+afQ
 aqm
 asR
-oVt
+atc
 aDe
 bAD
 aNV
@@ -97382,11 +97270,11 @@ aal
 aal
 aaa
 aaa
-wkD
+afQ
 aqq
-oVt
+atc
 awP
-wkD
+afQ
 aSr
 aNW
 asj
@@ -97639,11 +97527,11 @@ aal
 aaa
 aaa
 aaa
-wkD
-rSF
+afQ
+asD
 aur
-rSF
-wkD
+asD
+afQ
 bAD
 aNV
 asj
@@ -97898,9 +97786,9 @@ aaa
 aaa
 aaa
 jaa
-oVt
-jaa
-omk
+atc
+awc
+aFz
 mtv
 aNV
 asj
@@ -98156,8 +98044,8 @@ aaa
 aaa
 ore
 uww
-ore
-omk
+awq
+aFz
 bAD
 aNV
 asj
