@@ -235,7 +235,7 @@
 /obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
 "ay" = (
 /obj/structure/window/reinforced{
@@ -244,7 +244,7 @@
 /obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
 "az" = (
 /obj/effect/turf_decal/stripes/line{
@@ -401,7 +401,7 @@
 /obj/structure/shuttle/engine/propulsion/right{
 	dir = 8
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
 "aM" = (
 /obj/effect/turf_decal/stripes/line{
