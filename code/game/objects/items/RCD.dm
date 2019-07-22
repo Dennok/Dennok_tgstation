@@ -37,16 +37,24 @@ RLD
 	var/has_ammobar = FALSE	//controls whether or not does update_icon apply ammo indicator overlays
 	var/ammo_sections = 10	//amount of divisions in the ammo indicator overlay/number of ammo indicator states
 	var/upgrade = FALSE
+	var/datum/component/remote_materials/silo_mats //remote connection to the silo
+	var/silo_link = FALSE //switch to use internal or remote storage
 
-/obj/item/construction/Initialize()
+/obj/item/construction/Initialize(mapload)
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
+	if(upgrade & RCD_UPGRADE_SILO_LINK)
+		silo_mats = AddComponent(/datum/component/remote_materials, "RCD", mapload, FALSE)
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
 	. += "\A [src]. It currently holds [matter]/[max_matter] matter-units."
+	if(upgrade & RCD_UPGRADE_SILO_LINK)
+		. += "\A [src]. Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
+		if(silo_link && !silo_mats.on_hold())
+			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)] units."
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -811,8 +819,12 @@ RLD
 	upgrade = RCD_UPGRADE_FRAMES
 
 /obj/item/rcd_upgrade/simple_circuits
-	desc = "It contains the design for firelock, air alarm, fire alarm, apc circuits."
+	desc = "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
 	upgrade = RCD_UPGRADE_SIMPLE_CIRCUITS
+
+/obj/item/rcd_upgrade/silo_link
+	desc = "It contains the design for firelock, air alarm, fire alarm, apc circuits."
+	upgrade = RCD_UPGRADE_SILO_LINK
 
 #undef GLOW_MODE
 #undef LIGHT_MODE
