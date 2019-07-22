@@ -220,6 +220,23 @@ RLD
 
 	to_chat(user, "<span class='notice'>You change \the [src]'s window mode to [window_type_name].</span>")
 
+/obj/item/construction/rcd/verb/toggle_silo_link_verb()
+	set name = "RCD : Toggle Silo Link"
+	set category = "Object"
+	set src in view(1)
+
+	if(!usr.canUseTopic(src, BE_CLOSE))
+		return
+
+	toggle_silo_link(usr)
+
+/obj/item/construction/rcd/proc/toggle_silo_link(mob/user)
+	if(silo_mats)
+		silo_link = !silo_link
+		to_chat(user, "<span class='notice'>You change \the [src]'s storage link state: [silo_link ? "ON" : "OFF"].</span>")
+	else
+		to_chat(user, "<span class='warning'>\the [src] dont have remote storage connection.</span>")
+
 /obj/item/construction/rcd/proc/change_airlock_access(mob/user)
 	if (!ishuman(user) && !user.has_unlimited_silicon_privilege)
 		return
@@ -845,7 +862,7 @@ RLD
 	upgrade = RCD_UPGRADE_SIMPLE_CIRCUITS
 
 /obj/item/rcd_upgrade/silo_link
-	desc = "It contains the design for firelock, air alarm, fire alarm, apc circuits."
+	desc = "It contains direct silo connection RCD upgrade."
 	upgrade = RCD_UPGRADE_SILO_LINK
 
 #undef GLOW_MODE
