@@ -452,9 +452,8 @@
 	return ..()
 
 /obj/structure/firelock_frame/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-//	switch(the_rcd.upgrade)
-	if(the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
-		return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 20, "cost" = 5)	
+	if(CONSTRUCTION_NOCIRCUIT && (the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS))
+		return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 20, "cost" = 1)	
 	return FALSE
 
 /obj/machinery/door/airlock/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
