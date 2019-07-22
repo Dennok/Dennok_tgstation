@@ -94,6 +94,8 @@ RLD
 		var/obj/item/rcd_upgrade/UP = W
 		if(!(upgrade & UP.upgrade))
 			upgrade |= UP.upgrade
+			if((UP.upgrade & RCD_UPGRADE_SILO_LINK) && !silo_mats)
+				silo_mats = AddComponent(/datum/component/remote_materials, "RCD", mapload, FALSE)
 			playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 			qdel(W)
 	else
