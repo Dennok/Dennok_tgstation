@@ -53,16 +53,6 @@
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/rcd_upgrade/silo_link
-	name = "Advanced RCD silo link upgrade"
-	desc = "Adds the silo dirrect link to the RCD."
-	id = "rcd_upgrade_silo_link"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 2500, MAT_GLASS = 2500, MAT_SILVER = 2500, MAT_TITANIUM = 2500, MAT_BLUESPACE = 2500)
-	build_path = /obj/item/rcd_upgrade/silo_link
-	category = list("Tool Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
-
 /////////////////////////////////////////
 //////////////Alien Tools////////////////
 /////////////////////////////////////////
