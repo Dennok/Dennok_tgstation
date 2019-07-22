@@ -789,9 +789,8 @@
 	return ..()
 
 /obj/machinery/airalarm/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
-//	switch(the_rcd.upgrade)
-	if(the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
-		return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 20, "cost" = 5)	
+	if((buildstage == 0) || (the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS))
+		return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 20, "cost" = 1)	
 	return FALSE
 
 /obj/machinery/airalarm/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
