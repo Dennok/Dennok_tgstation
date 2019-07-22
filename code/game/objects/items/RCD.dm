@@ -52,7 +52,7 @@ RLD
 	. = ..()
 	. += "\A [src]. It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
-		. += "\A [src]. Remote storage link state: [silo_link ? "ON" : "OFF"]."
+		. += "\A [src]. Remote storage link state: [silo_link ? "ON" : "OFF"]." // [silo_mats.on_hold() ? "ON HOLD" : "ON"]
 		if(silo_link && !silo_mats.on_hold())
 			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)/(2000/sheetmultiplier)] rcd units." // 1 matter for 1 floortile, as 4 tiles are produced from 1 metal
 
