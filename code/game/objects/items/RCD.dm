@@ -54,7 +54,7 @@ RLD
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
 		. += "\A [src]. Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
 		if(silo_link && !silo_mats.on_hold())
-			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)/500] rcd units." // 1 matter for 1 floortile, as 4 tiles are produced from 1 metal
+			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)/(2000/sheetmultiplier)] rcd units." // 1 matter for 1 floortile, as 4 tiles are produced from 1 metal
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -132,7 +132,7 @@ RLD
 		update_icon()
 		return TRUE
 	else
-		if(!silo_mats.mat_container.has_materials(list(MAT_METAL=500), amount))
+		if(!silo_mats.mat_container.has_materials(list(MAT_METAL=2000/sheetmultiplier), amount))
 			if(user)
 				to_chat(user, no_ammo_message)
 			return FALSE
@@ -140,8 +140,8 @@ RLD
 			if(user)
 				to_chat(user, "Mineral access is on hold, please contact the quartermaster.")
 			return FALSE
-		silo_mats.mat_container.use_amount(list(MAT_METAL=500), amount)
-		materials.silo_log(src, "consume", -amount, "build", list(MAT_METAL=500))
+		silo_mats.mat_container.use_amount(list(MAT_METAL=2000/sheetmultiplier), amount)
+		materials.silo_log(src, "consume", -amount, "build", list(MAT_METAL=2000/sheetmultiplier))
 		return TRUE
 
 /obj/item/construction/proc/checkResource(amount, mob/user)
@@ -152,7 +152,7 @@ RLD
 			if(user)
 				to_chat(user, "Mineral access is on hold, please contact the quartermaster.")
 			return FALSE
-		. = silo_mats.mat_container.has_materials(list(MAT_METAL=500), amount)
+		. = silo_mats.mat_container.has_materials(list(MAT_METAL=2000/sheetmultiplier, amount)
 	if(!. && user)
 			to_chat(user, no_ammo_message)
 			if(has_ammobar)
