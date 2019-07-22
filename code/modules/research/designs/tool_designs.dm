@@ -33,13 +33,33 @@
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/rcd_upgrade
-	name = "Advanced RCD designs upgrade"
+/datum/design/rcd_upgrade/frames
+	name = "RCD frames designs upgrade"
 	desc = "Adds the computer frame and machine frame to the RCD."
-	id = "rcd_upgrade"
+	id = "rcd_upgrade_frames"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 5000, MAT_GLASS = 2500, MAT_SILVER = 1500, MAT_TITANIUM = 2000)
-	build_path = /obj/item/rcd_upgrade
+	build_path = /obj/item/rcd_upgrade/frames
+	category = list("Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/rcd_upgrade/simple_circuits
+	name = "RCD simple circuits designs upgrade"
+	desc = "Adds the simple circuits to the RCD."
+	id = "rcd_upgrade_simple_circuits"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 2500, MAT_SILVER = 1500, MAT_TITANIUM = 2000)
+	build_path = /obj/item/rcd_upgrade/simple_circuits
+	category = list("Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/rcd_upgrade/silo_link
+	name = "Advanced RCD silo link upgrade"
+	desc = "Adds the silo dirrect link to the RCD."
+	id = "rcd_upgrade_silo_link"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2500, MAT_GLASS = 2500, MAT_SILVER = 2500, MAT_TITANIUM = 2500, MAT_BLUESPACE = 2500)
+	build_path = /obj/item/rcd_upgrade/silo_link
 	category = list("Tool Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
