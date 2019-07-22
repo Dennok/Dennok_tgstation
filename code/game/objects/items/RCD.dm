@@ -83,11 +83,9 @@ RLD
 	if(loaded)
 		to_chat(user, "<span class='notice'>[src] now holds [matter]/[max_matter] matter-units.</span>")
 	else if(istype(W, /obj/item/rcd_upgrade))
-		var/obj/item/rcd_upgrade/UP = W
-		if(!(upgrade & UP.upgrade))
-			upgrade |= UP.upgrade
-			if((UP.upgrade & RCD_UPGRADE_SILO_LINK) && !silo_mats)
-				silo_mats = AddComponent(/datum/component/remote_materials, "RCD", FALSE, FALSE)
+		var/obj/item/rcd_upgrade/rcd_up = W
+		if(!(upgrade & rcd_up.upgrade))
+			upgrade |= rcd_up.upgrade
 			playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 			qdel(W)
 	else
