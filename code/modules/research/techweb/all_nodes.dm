@@ -585,7 +585,7 @@
 	prereq_ids = list("adv_engi")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
-
+/*
 /datum/techweb_node/adv_rcd_upgrade
 	id = "adv_rcd_upgrade"
 	display_name = "Advanced RCD designs upgrade"
@@ -594,7 +594,7 @@
 	prereq_ids = list("rcd_upgrade", "bluespace_travel")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
-
+*/
 /////////////////////////weaponry tech/////////////////////////
 /datum/techweb_node/weaponry
 	id = "weaponry"
