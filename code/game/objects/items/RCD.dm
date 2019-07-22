@@ -52,7 +52,7 @@ RLD
 	. = ..()
 	. += "\A [src]. It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
-		. += "\A [src]. Remote storage link state: [silo_link ? "ON" : "OFF"]." // [silo_mats.on_hold() ? "ON HOLD" : "ON"]
+		. += "\A [src]. Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
 		if(silo_link && !silo_mats.on_hold())
 			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)/(2000/sheetmultiplier)] rcd units." // 1 matter for 1 floortile, as 4 tiles are produced from 1 metal
 
@@ -152,7 +152,7 @@ RLD
 			if(user)
 				to_chat(user, "Mineral access is on hold, please contact the quartermaster.")
 			return FALSE
-		. = silo_mats.mat_container.has_materials(list(MAT_METAL=2000/sheetmultiplier, amount)
+		. = silo_mats.mat_container.has_materials(list(MAT_METAL=2000/sheetmultiplier, amount))
 	if(!. && user)
 		to_chat(user, no_ammo_message)
 		if(has_ammobar)
