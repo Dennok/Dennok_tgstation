@@ -54,7 +54,7 @@ RLD
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
 		. += "\A [src]. Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
 		if(silo_link && !silo_mats.on_hold())
-			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)] units."
+			. += "\A [src]. Remote connection have [silo_mats.mat_container.amount(MAT_METAL)/500] rcd units." // 1 matter for 1 floortile, as 4 tiles are produced from 1 metal
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -123,21 +123,41 @@ RLD
 		spark_system.start()
 
 /obj/item/construction/proc/useResource(amount, mob/user)
-	if(matter < amount)
-		if(user)
-			to_chat(user, no_ammo_message)
-		return 0
-	matter -= amount
-	update_icon()
-	return 1
+	if(!silo_mats || !silo_link)
+		if(matter < amount)
+			if(user)
+				to_chat(user, no_ammo_message)
+			return FALSE
+		matter -= amount
+		update_icon()
+		return TRUE
+	else
+		if(!silo_mats.mat_container.has_materials(list(MAT_METAL=500), amount))
+			if(user)
+				to_chat(user, no_ammo_message)
+			return FALSE
+		if(silo_mats.on_hold())
+			if(user)
+				to_chat(user, "Mineral access is on hold, please contact the quartermaster.")
+			return FALSE
+		silo_mats.mat_container.use_amount(list(MAT_METAL=500), amount)
+		materials.silo_log(src, "consume", -amount, "build", list(MAT_METAL=500))
+		return TRUE
 
 /obj/item/construction/proc/checkResource(amount, mob/user)
-	. = matter >= amount
+	if(!silo_mats || !silo_link)
+		. = matter >= amount
+	else
+		if(silo_mats.on_hold())
+			if(user)
+				to_chat(user, "Mineral access is on hold, please contact the quartermaster.")
+			return FALSE
+		. = silo_mats.mat_container.has_materials(list(MAT_METAL=500), amount)
 	if(!. && user)
-		to_chat(user, no_ammo_message)
-		if(has_ammobar)
-			flick("[icon_state]_empty", src)	//somewhat hacky thing to make RCDs with ammo counters actually have a blinking yellow light
-	return .
+			to_chat(user, no_ammo_message)
+			if(has_ammobar)
+				flick("[icon_state]_empty", src)	//somewhat hacky thing to make RCDs with ammo counters actually have a blinking yellow light
+	return .		
 
 /obj/item/construction/proc/range_check(atom/A, mob/user)
 	if(!(A in view(7, get_turf(user))))
