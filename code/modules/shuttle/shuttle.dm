@@ -13,7 +13,7 @@
 	anchored = TRUE
 	var/id ///for identifying shuttle or dock among many others, necessarily be unical
 	var/destination_type ///for map edits, work as category for search, shuttles can be allowed to fly to category
-	
+
 	dir = NORTH /// this should point -away- from the dockingport door, ie towards the ship
 	var/width = 0	///size of covered area, perpendicular to dir
 	var/height = 0	///size of covered area, parallel to dir
@@ -22,7 +22,7 @@
 
 	var/area_type
 	var/hidden = FALSE ///are we invisible to shuttle navigation computers?
-	
+
 	var/delete_after = FALSE ///Delete this port after ship fly off.
 
 	///these objects are indestructible
@@ -169,9 +169,10 @@
 
 /obj/docking_port/stationary/Initialize(mapload)
 	. = ..()
-	SSshuttle.stationary += src
-	id = "[destination_type][SSshuttle.stationary.len]"
-	name = "[name] dock[SSshuttle.stationary.len]"
+	SSshuttle.stationary_amount++
+	id = "[destination_type]_[SSshuttle.stationary_amount]"
+	name = "[name] dock[SSshuttle.stationary_amount]"
+	SSshuttle.stationary[id] = src
 	if(!area_type)
 		var/area/place = get_area(src)
 		area_type = place?.type // We might be created in nullspace
@@ -186,7 +187,7 @@
 
 /obj/docking_port/stationary/Destroy(force)
 	if(force)
-		SSshuttle.stationary -= src
+		SSshuttle.stationary -= id
 	. = ..()
 
 /obj/docking_port/stationary/Moved(atom/oldloc, dir, forced)
@@ -280,11 +281,18 @@
 	var/list/hidden_turfs = list()
 
 /obj/docking_port/mobile/proc/register()
-	SSshuttle.mobile += src
+	if(SSshuttle.mobile[id])
+		stack_trace("[src] [id] already in SSshuttle.mobile! Replacing existing id.")
+	if(!id || id == initial(id))
+		stack_trace("[src] dont have unique id on register(). Generatng.")
+		id = "[id][GUID()]"
+	SSshuttle.mobile[id] = src
 
 /obj/docking_port/mobile/Destroy(force)
 	if(force)
-		SSshuttle.mobile -= src
+		if(!SSshuttle.mobile[id])
+			stack_trace("[src] [id] already deleted or not exist in  SSshuttle.mobile!")
+		SSshuttle.mobile -= id
 		destination = null
 		previous = null
 		QDEL_NULL(assigned_transit)		///don't need it where we're goin'!
@@ -295,8 +303,9 @@
 /obj/docking_port/mobile/Initialize(mapload)
 	. = ..()
 
-	id = "[destination_type][SSshuttle.mobile.len]"
-	name = "[name] shuttle[SSshuttle.mobile.len]"
+	SSshuttle.mobile_amount++
+	id = "[destination_type]_[SSshuttle.mobile_amount]"
+	name = "[name] shuttle[SSshuttle.mobile_amount]"
 
 	shuttle_areas = list()
 	var/list/all_turfs = return_ordered_turfs(x, y, z, dir)
@@ -315,17 +324,12 @@
 
 /// Called after the shuttle is loaded from template
 /obj/docking_port/mobile/proc/linkup(datum/map_template/shuttle/template, obj/docking_port/stationary/dock)
-	var/list/static/shuttle_id = list()
-	var/idnum = ++shuttle_id[template]
-	if(idnum > 1)
-		id = "[id][idnum]"
-		name = "[name] [idnum]"
 	for(var/place in shuttle_areas)
 		var/area/area = place
-		area.connect_to_shuttle(src, dock, idnum, FALSE)
+		area.connect_to_shuttle(src, dock, id, FALSE)
 		for(var/each in place)
 			var/atom/atom = each
-			atom.connect_to_shuttle(src, dock, idnum, FALSE)
+			atom.connect_to_shuttle(src, dock, id, FALSE)
 
 
 ///this is a hook for custom behaviour. Maybe at some point we could add checks to see if engines are intact
