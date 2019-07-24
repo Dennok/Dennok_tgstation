@@ -767,7 +767,7 @@
 			else
 				hud_used.healthdoll.icon_state = "healthdoll_DEAD"
 
-/mob/living/carbon/human/fully_heal(admin_revive = 0)
+/mob/living/carbon/human/fully_heal(admin_revive = FALSE)
 	dna?.species.spec_fully_heal(src)
 	if(admin_revive)
 		regenerate_limbs()
@@ -902,7 +902,7 @@
 	for(var/bp in body_parts)
 		if(istype(bp, /obj/item/clothing))
 			var/obj/item/clothing/C = bp
-			if(C.blocks_shove_knockdown)
+			if(C.clothing_flags & BLOCKS_SHOVE_KNOCKDOWN)
 				return TRUE
 	return FALSE
 

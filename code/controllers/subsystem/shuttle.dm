@@ -9,6 +9,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	var/list/mobile = list()
 	var/list/stationary = list()
+	var/list/beacons = list()
 	var/list/transit = list()
 	var/mobile_amount
 	var/stationary_amount
@@ -680,6 +681,8 @@ SUBSYSTEM_DEF(shuttle)
 	//	timer = existing_shuttle.timer
 	//	mode = existing_shuttle.mode
 	//	D = existing_shuttle.get_docked()
+	if(!D)
+		D = generate_transit_dock(preview_shuttle)
 
 	if(!D)
 		CRASH("No dock found for preview shuttle ([preview_template.name]), aborting.")
