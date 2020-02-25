@@ -17,6 +17,7 @@
 /obj/item/tank/jetpack/Initialize()
 	. = ..()
 	ion_trail = new
+	ion_trail.auto_process = FALSE
 	ion_trail.set_up(src)
 
 /obj/item/tank/jetpack/populate_gas()
@@ -57,6 +58,7 @@
 	icon_state = "[initial(icon_state)]-on"
 	ion_trail.start()
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/move_react)
+	RegisterSignal(user, COMSIG_MOVABLE_PRE_MOVE, .proc/pre_move_react)
 	if(full_speed)
 		user.add_movespeed_modifier(MOVESPEED_ID_JETPACK, priority=100, multiplicative_slowdown=-0.5, movetypes=FLOATING, conflict=MOVE_CONFLICT_JETPACK)
 
@@ -84,6 +86,9 @@
 	if(length(user.client.keys_held & user.client.movement_keys))//You use jet when press keys. yes.
 		allow_thrust(0.01, user)
 
+/obj/item/tank/jetpack/proc/pre_move_react(mob/user)
+	ion_trail.oldposition = get_turf(src)
+
 /obj/item/tank/jetpack/proc/allow_thrust(num, mob/living/user)
 	if(!on)
 		return
@@ -98,6 +103,7 @@
 
 	var/turf/T = get_turf(user)
 	T.assume_air(removed)
+	ion_trail.generate_effect()
 
 	return TRUE
 
@@ -137,6 +143,7 @@
 
 	var/turf/T = get_turf(user)
 	T.assume_air(removed)
+	ion_trail.generate_effect()
 
 	return TRUE
 
