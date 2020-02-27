@@ -276,7 +276,7 @@
 		return
 
 /obj/item/defibrillator/compact/combat/loaded/nanotrasen
-	name = "elite nanotrasen defibrillator"
+	name = "elite Nanotrasen defibrillator"
 	desc = "A belt-equipped state-of-the-art defibrillator. Can revive through spacesuits, has an experimental self-recharging battery, and can be utilized in combat via applying the paddles in a disarming or agressive manner."
 	icon_state = "defibnt" //needs defib inhand sprites
 	item_state = "defibnt"
@@ -439,24 +439,11 @@
 		do_harm(H, user)
 		return
 
-	if(can_defib(H))
+	if(H.can_defib())
 		H.notify_ghost_cloning("Your heart is being defibrillated!")
 		H.grab_ghost() // Shove them back in their body.
 
 	do_help(H, user)
-
-/obj/item/twohanded/shockpaddles/proc/can_defib(mob/living/carbon/H)
-	var/obj/item/organ/heart = H.getorgan(/obj/item/organ/heart)
-	if(H.suiciding || H.hellbound || HAS_TRAIT(H, TRAIT_HUSK))
-		return
-	if((H.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE) || (H.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE))
-		return
-	if(!heart || (heart.organ_flags & ORGAN_FAILING))
-		return
-	var/obj/item/organ/brain/BR = H.getorgan(/obj/item/organ/brain)
-	if(QDELETED(BR) || (BR.organ_flags & ORGAN_FAILING) || BR.suicided)
-		return
-	return TRUE
 
 /obj/item/twohanded/shockpaddles/proc/shock_touching(dmg, mob/H)
 	if(isliving(H.pulledby))		//CLEAR!
@@ -672,7 +659,7 @@
 	base_icon_state = "syndiepaddles"
 
 /obj/item/twohanded/shockpaddles/syndicate/nanotrasen
-	name = "elite nanotrasen defibrillator paddles"
+	name = "elite Nanotrasen defibrillator paddles"
 	desc = "A pair of paddles used to revive deceased ERT members. They possess both the ability to penetrate armor and to deliver powerful or disabling shocks offensively."
 	icon_state = "ntpaddles0"
 	item_state = "ntpaddles0"
