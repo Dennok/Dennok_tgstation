@@ -335,6 +335,16 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_ALL
 
+/datum/design/robotic_arm
+	name = "Automated Robotic Arm Base"
+	desc = "A base that can be fitted with a standard cyborg arm and automatically move or insert items into machines."
+	id = "roboticarm"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/iron=2000, /datum/material/glass = 100)
+	build_path = /obj/item/robotic_arm_base
+	category = list("Misc. Machinery")
+	departmental_flags = DEPARTMENTAL_FLAG_ALL
+
 /////////////////////////////////////////
 ////////////Janitor Designs//////////////
 /////////////////////////////////////////
