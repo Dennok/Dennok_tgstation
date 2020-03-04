@@ -23,6 +23,7 @@
 		. += "<span class='notice'>The cable insulation is torn apart and the wires are frayed beyond use.</span>"
 	if(broken_status == RELAY_ADD_METAL)
 		. += "<span class='notice'>The cable insulation is torn apart and the wiring is exposed.</span>"
+	. += "<span class='notice'>above:[above]:[above?1:0], below:[below]:[below?1:0] </span>"
 
 /obj/machinery/power/deck_relay/attackby(obj/item/I, mob/user, params)
 	if(default_unfasten_wrench(user, I))
@@ -107,6 +108,7 @@
 
 /obj/machinery/power/deck_relay/Initialize()
 	. = ..()
+	name = rand(1000)
 	addtimer(CALLBACK(src, .proc/find_relays), 30)
 	addtimer(CALLBACK(src, .proc/refresh), 50) //Wait a bit so we can find the one below, then get powering
 
@@ -144,3 +146,19 @@
 	if(below || above)
 		icon_state = "cablerelay-on"
 	return TRUE
+
+///refresh() on connect_to_network()
+/obj/machinery/power/deck_relay/connect_to_network()
+	to_chat(world, "<span class='danger'>[name] connect_to_network()</span>")
+	. = ..()
+	if(.)
+		//addtimer(CALLBACK(src, .proc/refresh), 0)
+		addtimer(CALLBACK(src, .proc/find_relays), 30)
+		addtimer(CALLBACK(src, .proc/refresh), 50) //Wait a bit so we can find the one below, then get powering
+
+
+///break_connections() on disconnect_from_network()
+/obj/machinery/power/deck_relay/disconnect_from_network()
+	to_chat(world, "<span class='danger'>[name] disconnect_from_network()</span>")
+	addtimer(CALLBACK(src, .proc/break_connections), 0) 
+	return ..()
