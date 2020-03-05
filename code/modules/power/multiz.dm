@@ -162,3 +162,87 @@
 	to_chat(world, "<span class='danger'>[name] disconnect_from_network()</span>")
 	addtimer(CALLBACK(src, .proc/break_connections), 0) 
 	return ..()
+
+
+////////////////////////////////////////////
+// POWERBRIGE DATUM
+// powernet over powernets
+/////////////////////////////////////
+/datum/powerbrige
+	var/number					// unique id
+	var/list/cables = list()	// all cables & junctions
+	var/list/nodes = list()		// all connected machines
+
+/datum/powerbrige/New()
+	return ..()
+
+/datum/powerbrige/Destroy()
+	cables.Cut()
+	nodes.Cut()
+	return ..()
+
+/datum/powerbrige/proc/is_empty()
+	return !cables.len && !nodes.len
+
+//remove a cable from the current powerbrige
+//Warning : this proc DON'T check if the cable exists
+/datum/powerbrige/proc/remove_cable(obj/structure/cable/C)
+	cables -= C
+	//C.powernet = null
+	//if(is_empty())//the powernet is now empty...
+	//	qdel(src)///... delete it
+
+//add a cable to the current powerbrige
+//Warning : this proc DON'T check if the cable exists
+/datum/powerbrige/proc/add_cable(obj/structure/cable/C)
+	//if(C.powernet)// if C already has a powernet...
+	//	if(C.powernet == src)
+	//		return
+	//	else
+	//		C.powernet.remove_cable(C) //..remove it
+	//C.powernet = src
+	cables +=C
+
+//remove a power machine from the current powerbrige
+//if the powernet is then empty, delete it
+//Warning : this proc DON'T check if the machine exists
+/datum/powerbrige/proc/remove_machine(obj/machinery/power/M)
+	nodes -=M
+	//M.powernet = null
+	if(is_empty())//the powerbrige is now empty...
+		qdel(src)///... delete it
+
+
+//add a power machine to the current powerbrige
+//Warning : this proc DON'T check if the machine exists
+/datum/powerbrige/proc/add_machine(obj/machinery/power/deck_relay/M)
+	if(M.powerbrige)// if M already has a powerbrige...
+		if(M.powerbrige == src)
+			return
+		else
+			M.disconnect_from_powerbrige()//..remove it
+	M.powerbrige = src
+	nodes[M] = M
+
+//resets?
+/datum/powerbrige/proc/reset()
+	return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
