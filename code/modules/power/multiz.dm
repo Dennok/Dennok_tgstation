@@ -71,25 +71,6 @@
 	break_connections()
 	return ..()
 
-///Lose connections and reset the merged powernet so it makes 2 new seperated ones
-/obj/machinery/power/deck_relay/proc/break_connections()
-	if(above)
-		var/turf/above_deck_relay = get_turf(above)
-		var/obj/structure/cable/above_cable = above_deck_relay.get_cable_node()
-		if(above_cable)
-			var/datum/powernet/above_powernet = new()
-			propagate_network(above_cable, above_powernet)
-		above.below = null
-		above = null
-	if(below)
-		var/turf/below_deck_relay = get_turf(below)
-		var/obj/structure/cable/below_cable = below_deck_relay.get_cable_node()
-		if(below_cable)
-			var/datum/powernet/below_powernet = new()
-			propagate_network(below_cable, below_powernet)
-		below.above = null
-		below = null
-
 ///Allows you to scan the relay with a multitool to see stats/reconnect relays
 /obj/machinery/power/deck_relay/multitool_act(mob/user, obj/item/I)
 	if(!anchored)
@@ -103,50 +84,33 @@
 	if(!above && !below)
 		to_chat(user, "<span class='danger'>Cannot access valid powernet. Attempting to re-establish. Ensure any relays above and below are aligned properly and on cable nodes.</span>")
 		find_relays()
-		addtimer(CALLBACK(src, .proc/refresh), 20) //Wait a bit so we can find the one below, then get powering
+		//addtimer(CALLBACK(src, .proc/refresh), 20) //Wait a bit so we can find the one below, then get powering
 	return TRUE
 
 /obj/machinery/power/deck_relay/Initialize()
 	. = ..()
 	name = rand(1000)
-	addtimer(CALLBACK(src, .proc/find_relays), 30)
-	addtimer(CALLBACK(src, .proc/refresh), 50) //Wait a bit so we can find the one below, then get powering
-
-///Handles re-acquiring + merging powernets found by find_relays()
-/obj/machinery/power/deck_relay/proc/refresh()
-	if(above)
-		above.merge(src)
-	if(below)
-		below.merge(src)
-
-///Merges the two powernets connected to the deck relays
-/obj/machinery/power/deck_relay/proc/merge(var/obj/machinery/power/deck_relay/DR)
-	if(!DR)
-		return
-	var/turf/merge_from = get_turf(DR)
-	var/turf/merge_to = get_turf(src)
-	var/obj/structure/cable/C = merge_from.get_cable_node()
-	var/obj/structure/cable/XR = merge_to.get_cable_node()
-	if(C && XR)
-		merge_powernets(XR.powernet,C.powernet)//Bridge the powernets.
+	find_relays(force = FALSE)
 
 ///Locates relays that are above and below this object
-/obj/machinery/power/deck_relay/proc/find_relays(from)
+///If this going in infinite loop, someone bend your universe in donut
+///or i shitcode it
+/obj/machinery/power/deck_relay/proc/find_relays(from, force = TRUE)
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T))
 		return FALSE
-	to_chat(world, "<span class='danger'>[src] find_relays([from])</span>")
-	if(from != below)
+	to_chat(world, "<span class='danger'>[src] find_relays([from],[force])</span>")
+	if(from != below || force)
 		to_chat(world, "<span class='danger'>[src] re find below from [from]</span>")
 		below = null
 		below = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_below(T))
-		below?.find_relays(scr)
+		below?.find_relays(scr, force)
 
-	if(from != above)
+	if(from != above || force)
 		to_chat(world, "<span class='danger'>[src] re find above from [from]</span>")
 		above = null
 		above = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_above(T))
-		above?.find_relays(scr)
+		above?.find_relays(scr, force)
 
 	if(below || above)
 		icon_state = "cablerelay-on"
@@ -260,9 +224,26 @@
 	return bridge1
 
 
-
-
-
+/*
+///Lose connections and reset the merged powernet so it makes 2 new seperated ones
+/obj/machinery/power/deck_relay/proc/break_connections()
+	if(above)
+		var/turf/above_deck_relay = get_turf(above)
+		var/obj/structure/cable/above_cable = above_deck_relay.get_cable_node()
+		if(above_cable)
+			var/datum/powernet/above_powernet = new()
+			propagate_network(above_cable, above_powernet)
+		above.below = null
+		above = null
+	if(below)
+		var/turf/below_deck_relay = get_turf(below)
+		var/obj/structure/cable/below_cable = below_deck_relay.get_cable_node()
+		if(below_cable)
+			var/datum/powernet/below_powernet = new()
+			propagate_network(below_cable, below_powernet)
+		below.above = null
+		below = null
+*/
 
 
 
