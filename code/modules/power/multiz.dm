@@ -225,10 +225,10 @@
 	nodes[M] = M
 
 //resets?
-/datum/powerbrige/proc/reset()
+/datum/powerbridge/proc/reset()
 	return
 
-/proc/merge_powernets(datum/powerbridge/bridge1, datum/powerbridge/bridge2)
+/proc/merge_powerbridges(datum/powerbridge/bridge1, datum/powerbridge/bridge2)
 	if(!bridge1 || !bridge2) //if one of the powerbridge doesn't exist, return
 		return
 
