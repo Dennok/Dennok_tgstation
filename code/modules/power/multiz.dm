@@ -131,41 +131,49 @@
 		merge_powernets(XR.powernet,C.powernet)//Bridge the powernets.
 
 ///Locates relays that are above and below this object
-/obj/machinery/power/deck_relay/proc/find_relays()
+/obj/machinery/power/deck_relay/proc/find_relays(from)
 	var/turf/T = get_turf(src)
 	if(!T || !istype(T))
 		return FALSE
-	below = null //in case we're re-establishing
-	above = null
+	to_chat(world, "<span class='danger'>[src] find_relays([from])</span>")
+	if(from != below)
+		to_chat(world, "<span class='danger'>[src] re find below from [from]</span>")
+		below = null
+		below = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_below(T))
+		below?.find_relays(scr)
+
+	if(from != above)
+		to_chat(world, "<span class='danger'>[src] re find above from [from]</span>")
+		above = null
+		above = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_above(T))
+		above?.find_relays(scr)
+
+	if(below || above)
+		icon_state = "cablerelay-on"
+	return TRUE
+
+
+/obj/machinery/power/deck_relay/proc/find_cable_node()
 	var/obj/structure/cable/C = T.get_cable_node() //check if we have a node cable on the machine turf, the first found is picked
 	if(C && C.powernet)
 		C.powernet.add_machine(src) //Nice we're in.
 		powernet = C.powernet
-	below = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_below(T))
-	above = locate(/obj/machinery/power/deck_relay) in(SSmapping.get_turf_above(T))
-	if(below || above)
-		icon_state = "cablerelay-on"
-	return TRUE
+
 
 ///refresh() on connect_to_network()
 /obj/machinery/power/deck_relay/connect_to_network()
 	to_chat(world, "<span class='danger'>[name] connect_to_network()</span>")
 	. = ..()
-	if(.)
-		//addtimer(CALLBACK(src, .proc/refresh), 0)
-		addtimer(CALLBACK(src, .proc/find_relays), 30)
-		addtimer(CALLBACK(src, .proc/refresh), 50) //Wait a bit so we can find the one below, then get powering
 
 
 ///break_connections() on disconnect_from_network()
 /obj/machinery/power/deck_relay/disconnect_from_network()
 	to_chat(world, "<span class='danger'>[name] disconnect_from_network()</span>")
-	addtimer(CALLBACK(src, .proc/break_connections), 0) 
 	return ..()
 
 
 ////////////////////////////////////////////
-// POWERBRIGE DATUM
+// POWERBRIGE bridge DATUM
 // powernet over powernets
 /////////////////////////////////////
 /datum/powerbrige
