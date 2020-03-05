@@ -228,7 +228,28 @@
 /datum/powerbrige/proc/reset()
 	return
 
+/proc/merge_powernets(datum/powerbridge/bridge1, datum/powerbridge/bridge2)
+	if(!bridge1 || !bridge2) //if one of the powerbridge doesn't exist, return
+		return
 
+	if(bridge1 == bridge2) //don't merge same powerbridges
+		return
+
+	//We assume bridge1 is larger. If bridge2 is in fact larger we are just going to make them switch places to reduce on code.
+	if(bridge1.nodes.len < bridge2.nodes.len)	//bridge2 is larger than bridge1. Let's switch them around
+		var/temp = bridge1
+		bridge1 = bridge2
+		bridge2 = temp
+
+	//merge bridge2 into bridge1
+	for(var/obj/structure/cable/Cable in bridge2.cables) //merge cables
+		net1.add_cable(Cable)
+
+	for(var/obj/machinery/power/Node in bridge2.nodes) //merge power machines
+		if(!Node.connect_to_bridge())
+			Node.disconnect_from_bridge() //if somehow we can't connect the machine to the new powerbridge, disconnect it from the old nonetheless
+
+	return bridge1
 
 
 
