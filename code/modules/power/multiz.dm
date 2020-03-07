@@ -11,7 +11,5 @@
 	. = ..()
 	var/turf/T = get_turf(src)
 	. +=  locate(/obj/structure/cable/multilayer/MultiZ) in (SSmapping.get_turf_below(T))
-	to_chat(world, "<span class='red'>get_cable_connections() [locate(/obj/structure/cable/multilayer/MultiZ) in (SSmapping.get_turf_below(T))]</span>")
 	. +=  locate(/obj/structure/cable/multilayer/MultiZ) in (SSmapping.get_turf_above(T))
-	to_chat(world, "<span class='red'>get_cable_connections() [locate(/obj/structure/cable/multilayer/MultiZ) in (SSmapping.get_turf_above(T))]</span>")
 
