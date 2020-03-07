@@ -589,6 +589,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	icon = 'icons/obj/power_cond/layer_cable.dmi'
 	icon_state = "l2-noconnection"
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
+	color = "black"
 
 /obj/structure/cable/multilayer/update_icon_state()
 	return
@@ -604,7 +605,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 
 	color = rgb(R, G, B)
 
-	machinery_node?.color = machinery_layer & MACHINERY_LAYER_1 ? "black" : "white"
+	machinery_node?.alpha = machinery_layer & MACHINERY_LAYER_1 ? 255 : 0
 
 	return ..()
 
