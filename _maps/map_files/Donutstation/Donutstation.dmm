@@ -3751,7 +3751,6 @@
 	dir = 4
 	},
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "ajl" = (
@@ -6303,7 +6302,6 @@
 /area/maintenance/department/security)
 "aoI" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/department/security)
 "aoJ" = (
@@ -14425,7 +14423,6 @@
 /area/maintenance/fore)
 "aGT" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "aGU" = (
@@ -15174,7 +15171,6 @@
 /area/medical/medbay/central)
 "aIH" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat_interior)
 "aII" = (
@@ -22907,7 +22903,6 @@
 	},
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/maintenance/port/fore)
 "bac" = (
@@ -25068,7 +25063,6 @@
 	dir = 1
 	},
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/maintenance/aft)
 "beW" = (
@@ -26147,7 +26141,6 @@
 /area/crew_quarters/kitchen/coldroom)
 "bhg" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "bhi" = (
@@ -26694,7 +26687,6 @@
 /area/crew_quarters/kitchen/coldroom)
 "bin" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_room)
 "bip" = (
@@ -31553,7 +31545,6 @@
 /turf/closed/wall,
 /area/tcommsat/computer)
 "bsi" = (
-/obj/structure/cable,
 /obj/structure/cable/multilayer/MultiZ,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -40791,7 +40782,6 @@
 "bLd" = (
 /obj/machinery/light/small,
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/security/prison)
 "bLi" = (

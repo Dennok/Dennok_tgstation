@@ -1184,7 +1184,6 @@
 /area/space)
 "iq" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/construction)
 "iu" = (
@@ -1273,7 +1272,6 @@
 /turf/open/floor/plasteel,
 /area/engine/storage)
 "nF" = (
-/obj/structure/cable,
 /obj/structure/cable/multilayer/MultiZ,
 /turf/open/floor/plating,
 /area/hallway/secondary/service)
@@ -1774,7 +1772,6 @@
 /area/engine/storage)
 "Vm" = (
 /obj/structure/cable/multilayer/MultiZ,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/engine/storage)
 "Vn" = (
