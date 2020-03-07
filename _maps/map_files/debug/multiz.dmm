@@ -1183,7 +1183,7 @@
 /turf/open/floor/plating,
 /area/space)
 "iq" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/construction)
@@ -1274,7 +1274,7 @@
 /area/engine/storage)
 "nF" = (
 /obj/structure/cable,
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /turf/open/floor/plating,
 /area/hallway/secondary/service)
 "od" = (
@@ -1773,7 +1773,7 @@
 /turf/open/floor/plating,
 /area/engine/storage)
 "Vm" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/engine/storage)

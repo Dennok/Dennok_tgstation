@@ -2571,7 +2571,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{
 	dir = 4
 	},
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/central)
@@ -3769,7 +3769,7 @@
 	dir = 1
 	},
 /obj/structure/cable,
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4665,7 +4665,7 @@
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
 "jY" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/ai)
@@ -5542,7 +5542,7 @@
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
 "lR" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
@@ -6188,7 +6188,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plasteel,
 /area/maintenance/external/port/bow)
@@ -7152,7 +7152,7 @@
 /turf/open/floor/plating,
 /area/engine/gravity_generator)
 "px" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/engine/gravity_generator)
@@ -8843,7 +8843,7 @@
 /turf/open/floor/plasteel,
 /area/maintenance/external/aft)
 "sN" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
@@ -13751,7 +13751,7 @@
 /turf/open/floor/plating,
 /area/maintenance/solars/port/fore)
 "BS" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/maintenance/solars/port/fore)
@@ -15562,7 +15562,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security/upper)
 "Go" = (
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -19967,7 +19967,7 @@
 "Pk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable,
-/obj/machinery/power/deck_relay,
+/obj/structure/cable/multilayer/MultiZ,
 /turf/open/floor/plating,
 /area/security/prison/upper)
 "Pl" = (
