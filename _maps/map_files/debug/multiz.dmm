@@ -1183,7 +1183,7 @@
 /turf/open/floor/plating,
 /area/space)
 "iq" = (
-/obj/structure/cable/multilayer/MultiZ,
+/obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
 /area/construction)
 "iu" = (
@@ -1272,7 +1272,7 @@
 /turf/open/floor/plasteel,
 /area/engine/storage)
 "nF" = (
-/obj/structure/cable/multilayer/MultiZ,
+/obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
 /area/hallway/secondary/service)
 "od" = (
@@ -1771,7 +1771,7 @@
 /turf/open/floor/plating,
 /area/engine/storage)
 "Vm" = (
-/obj/structure/cable/multilayer/MultiZ,
+/obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating,
 /area/engine/storage)
 "Vn" = (
