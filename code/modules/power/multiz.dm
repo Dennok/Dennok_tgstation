@@ -1,5 +1,5 @@
-/obj/structure/cable/multilayer/multiz //This bridges powernets
-	name = "multizlayer cable hub"
+/obj/structure/cable/multilayer/multiz //This bridges powernets betwen Z levels
+	name = "multi z layer cable hub"
 	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty power Ztransfer."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cablerelay-on"
