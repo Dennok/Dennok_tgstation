@@ -513,6 +513,9 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	if(icon_state == "cable_bridge")
 		name = "multilayer cable hub"
 		return
+	if(icon_state == "cablerelay-on")
+		name = "multi z layer cable hub"
+		return
 
 	icon_state = "[initial(item_state)][amount < 3 ? amount : ""]"
 	name = "cable [amount < 3 ? "piece" : "coil"]"
