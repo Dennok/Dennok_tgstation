@@ -646,6 +646,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	
 	machinery_node = new /obj/node()
 	vis_contents += machinery_node
+	update_icon()
 
 /obj/structure/cable/multilayer/Destroy()					// called when a cable is deleted
 	QDEL_NULL(machinery_node) 
