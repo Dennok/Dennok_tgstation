@@ -454,7 +454,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 		"Layer 2" = image(icon = 'icons/mob/radial.dmi', icon_state = "coil-yellow"),
 		"Layer 3" = image(icon = 'icons/mob/radial.dmi', icon_state = "coil-blue"),
 		"Multilayer cable hub" = image(icon = 'icons/obj/power.dmi', icon_state = "cable_bridge"),
-		"Multi Z layer cable hub" = image(icon = 'icons/obj/power.dmi', icon_state = "cablerelay-on")		
+		"Multi Z layer cable hub" = image(icon = 'icons/obj/power.dmi', icon_state = "cablerelay-broken-cable")		
 		)
 	var/layer_result = show_radial_menu(user, src, layer_list, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
@@ -481,7 +481,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 			target_type = /obj/structure/cable/multilayer
 			target_layer = null
 		if("Multi Z layer cable hub")
-			icon_state = "cablerelay-on"
+			icon_state = "cablerelay-broken-cable"
 			color = "white"
 			target_type = /obj/structure/cable/multilayer/multiz
 			target_layer = null
@@ -513,7 +513,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	if(icon_state == "cable_bridge")
 		name = "multilayer cable hub"
 		return
-	if(icon_state == "cablerelay-on")
+	if(icon_state == "cablerelay-broken-cable")
 		name = "multi z layer cable hub"
 		return
 
