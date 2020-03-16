@@ -45,8 +45,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 	GLOB.cable_list += src //add it to the global cable list
 	Connect_cable()
-  
-  AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE)
 
 
 ///Set the linked indicator bitflags
@@ -601,7 +600,6 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	layer = WIRE_LAYER - 0.02 //Below all cables Disabled layers can lay over hub
 	color = "white"
 	var/obj/node/machinery_node
-	obj_flags = CAN_BE_HIT | ON_BLUEPRINTS
 
 /obj/node
 	icon = 'icons/obj/power_cond/layer_cable.dmi'
