@@ -599,9 +599,9 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	machinery_layer = MACHINERY_LAYER_1
 	layer = WIRE_LAYER - 0.02 //Below all cables Disabled layers can lay over hub
 	color = "white"
-	var/obj/node/machinery_node
+	var/obj/effect/node/machinery_node
 
-/obj/node
+/obj/effect/node
 	icon = 'icons/obj/power_cond/layer_cable.dmi'
 	icon_state = "l2-noconnection"
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
@@ -635,7 +635,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	if(!mapload)
 		auto_propagate_cut_cable(src)
 	
-	machinery_node = new /obj/node()
+	machinery_node = new /obj/effect/node()
 	vis_contents += machinery_node
 	update_icon()
 
