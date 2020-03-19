@@ -471,12 +471,12 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 			icon_state = "cable_bridge"
 			color = "white"
 			target_type = /obj/structure/cable/multilayer
-			target_layer = null
+			target_layer = CABLE_LAYER_2
 		if("Multi Z layer cable hub")
 			icon_state = "cablerelay-broken-cable"
 			color = "white"
 			target_type = /obj/structure/cable/multilayer/multiz
-			target_layer = null
+			target_layer = CABLE_LAYER_2
 	update_icon()
 
 
@@ -543,7 +543,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 		return
 
 	for(var/obj/structure/cable/C in T)
-		if(target_type == C.type)
+		if(C.cable_layer & target_layer)
 			to_chat(user, "<span class='warning'>There's already a cable at that position!</span>")
 			return
 
@@ -595,7 +595,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty multilayer power transfer. Refuse direct connections to other hubs."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cable_bridge"
-	cable_layer = null
+	cable_layer = CABLE_LAYER_2
 	machinery_layer = MACHINERY_LAYER_1
 	layer = WIRE_LAYER - 0.02 //Below all cables Disabled layers can lay over hub
 	color = "white"
