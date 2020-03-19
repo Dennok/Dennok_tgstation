@@ -711,3 +711,15 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 /obj/structure/cable/multilayer/CtrlClick(mob/living/user)
 	to_chat(user, "<span class='warning'>You pust reset button.</span>")
 	addtimer(CALLBACK(src, .proc/Reload), 10, TIMER_UNIQUE) //spam protect
+
+/obj/structure/cable/multilayer/get_cable_connections(powernetless_only)
+	. = list()
+	var/turf/T = get_turf(src)
+	for(var/check_dir in GLOB.cardinals)
+		if(linked_dirs & check_dir)
+			T = get_step(src, check_dir)
+			for(var/obj/structure/cable/C in T)
+				if(istype(C,src))
+					continue
+				if(cable_layer & C.cable_layer)
+					. += C
