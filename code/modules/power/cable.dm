@@ -592,7 +592,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 ///multilayer cable to connect different layers
 /obj/structure/cable/multilayer
 	name = "multilayer cable hub"
-	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty power transfer."
+	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty multilayer power transfer. Refuse direct connections to other hubs."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cable_bridge"
 	cable_layer = null
