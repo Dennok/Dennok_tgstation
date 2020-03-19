@@ -3,7 +3,6 @@
 	desc = "A flexible, superconducting insulated multilayer hub for heavy-duty power Ztransfer."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "cablerelay-on"
-	level = 2
 	cable_layer = CABLE_LAYER_1|CABLE_LAYER_2|CABLE_LAYER_3
 	machinery_layer = null
 
