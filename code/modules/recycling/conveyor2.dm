@@ -17,10 +17,12 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 	var/backwards		// hopefully self-explanatory
 	var/movedir			// the actual direction to move stuff in
 
-	var/list/affecting	// the list of all items that will be moved this ptick
+	var/list/next_affecting = list()
+	var/list/affecting = list()	// the list of all items that will be moved this ptick
 	var/id = ""			// the control ID	- must match controller ID
 	var/verted = 1		// Inverts the direction the conveyor belt moves.
-	var/conveying = FALSE
+
+	var/SW = 0 
 
 /obj/machinery/conveyor/centcom_auto
 	id = "round_end_belt"
@@ -57,6 +59,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		id = newid
 	update_move_direction()
 	LAZYADD(GLOB.conveyors_by_id[id], src)
+	RegisterSignal(loc, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_CREATED), .proc/conveyorCrossed) // When any atom moves onto the belt or gets created over the belt.
 
 /obj/machinery/conveyor/Destroy()
 	LAZYREMOVE(GLOB.conveyors_by_id[id], src)
@@ -124,39 +127,52 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 		return FALSE
 	return TRUE
 
+/obj/machinery/conveyor/proc/conveyorCrossed(datum/source, atom/movable/AM, atom/oldLoc)
+	next_affecting.Add(AM)
+
+	if(!operating || machine_stat & (BROKEN | NOPOWER))
+		return
+
+	//addtimer(CALLBACK(src, .proc/convey, affecting), 1, TIMER_UNIQUE) // pick(1,2) so players have a bit of trouble walking over belts moving in the opposite direction they are
+
 // machine process
 // move items to the target location
 /obj/machinery/conveyor/process()
-	if(machine_stat & (BROKEN | NOPOWER))
+	if(!operating || machine_stat & (BROKEN | NOPOWER))
 		return
-
-	//If the conveyor is broken or already moving items
-	if(!operating || conveying)
-		return
-
+/*
 	use_power(6)
 
 	//get the first 30 items in contents
 	affecting = list()
 	var/i = 0
-	for(var/item in loc.contents)
-		if(item == src)
-			continue
+	for(var/item in loc.contents-src)
 		i++ // we're sure it's a real target to move at this point
 		if(i >= MAX_CONVEYOR_ITEMS_MOVE)
 			break
 		affecting.Add(item)
+*/
+	if(SW)
+		convey(affecting)
+		SW=0
+	else
+		affecting |= next_affecting
+		affecting &= loc.contents //we move only things from our turf
+		next_affecting.Cut()
+		SW=1
+	//addtimer(CALLBACK(src, .proc/convey, affecting), 1, TIMER_UNIQUE)
 
-	conveying = TRUE
-	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
-
-/obj/machinery/conveyor/proc/convey(list/affecting)
+/obj/machinery/conveyor/proc/convey(list/affecting, max_count = MAX_CONVEYOR_ITEMS_MOVE)
+	//var/turf/T = get_step(src, movedir)
+	var/i = 0
 	for(var/atom/movable/A in affecting)
-		if(!QDELETED(A) && (A.loc == loc))
-			A.ConveyorMove(movedir)
-			//Give this a chance to yield if the server is busy
-			stoplag()
-	conveying = FALSE
+		if(i>=max_count)
+			return
+		i+=A.ConveyorMove(movedir)
+		//A.forceMove(T)
+		//ConveyorMove(movedir)
+		//Give this a chance to yield if the server is busy
+		stoplag()
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
@@ -291,6 +307,7 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 			C.begin_processing()
 		else
 			C.end_processing()
+		C.SW=0
 		CHECK_TICK
 
 // find any switches with same id as this one, and set their positions to match us

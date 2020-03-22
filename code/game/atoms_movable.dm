@@ -919,7 +919,8 @@
 /atom/movable/proc/ConveyorMove(movedir)
 	set waitfor = FALSE
 	if(!anchored && has_gravity())
-		step(src, movedir)
+		return step(src, movedir)
+	return FALSE
 
 //Returns an atom's power cell, if it has one. Overload for individual items.
 /atom/movable/proc/get_cell()
