@@ -175,13 +175,7 @@
 
 /obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume
 	name = "large dual-port air vent"
-
-/obj/machinery/atmospherics/components/binary/dp_vent_pump/high_volume/New()
-	..()
-	var/datum/gas_mixture/air1 = airs[1]
-	var/datum/gas_mixture/air2 = airs[2]
-	air1.volume = 1000
-	air2.volume = 1000
+	volume = 1000
 
 // Mapping
 

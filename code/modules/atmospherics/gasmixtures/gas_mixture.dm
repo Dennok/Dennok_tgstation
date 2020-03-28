@@ -36,10 +36,12 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 	
 	var/log = ""
 
-/datum/gas_mixture/New(volume)
+/datum/gas_mixture/New(volume, temperature)
 	gases = new
 	if (!isnull(volume))
 		src.volume = volume
+	if (!isnull(temperature))
+		src.volume = temperature
 	reaction_results = new
 
 //listmos procs

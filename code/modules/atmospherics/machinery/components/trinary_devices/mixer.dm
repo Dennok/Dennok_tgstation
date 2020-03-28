@@ -11,6 +11,8 @@
 	var/node1_concentration = 0.5
 	var/node2_concentration = 0.5
 
+	volume = 300
+
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "mixer"
 
@@ -51,12 +53,6 @@
 /obj/machinery/atmospherics/components/trinary/mixer/update_icon_nopipes()
 	var/on_state = on && nodes[1] && nodes[2] && nodes[3] && is_operational()
 	icon_state = "mixer_[on_state ? "on" : "off"][flipped ? "_f" : ""]"
-
-/obj/machinery/atmospherics/components/trinary/mixer/New()
-	..()
-	var/datum/gas_mixture/air3 = airs[3]
-	air3.volume = 300
-	airs[3] = air3
 
 /obj/machinery/atmospherics/components/trinary/mixer/process_atmos()
 	..()

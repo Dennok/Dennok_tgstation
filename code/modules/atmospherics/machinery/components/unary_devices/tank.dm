@@ -17,7 +17,6 @@
 /obj/machinery/atmospherics/components/unary/tank/New()
 	..()
 	var/datum/gas_mixture/air_contents = airs[1]
-	air_contents.volume = volume
 	air_contents.temperature = T20C
 	if(gas_type)
 		air_contents.assert_gas(gas_type)
