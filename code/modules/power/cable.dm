@@ -302,14 +302,14 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 // Powernets handling helpers
 //////////////////////////////////////////////
 
-/obj/structure/cable/proc/get_cable_connections(powernetless_only)
+/obj/structure/cable/proc/get_cable_connections(link_dirs = linked_dirs, check_layer = cable_layer)
 	. = list()
 	var/turf/T = get_turf(src)
 	for(var/check_dir in GLOB.cardinals)
-		if(linked_dirs & check_dir)
+		if(link_dirs & check_dir)
 			T = get_step(src, check_dir)
 			for(var/obj/structure/cable/C in T)
-				if(cable_layer & C.cable_layer)
+				if(check_layer & C.cable_layer)
 					. += C
 
 /obj/structure/cable/proc/get_all_cable_connections(powernetless_only)
@@ -600,12 +600,30 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	layer = WIRE_LAYER - 0.02 //Below all cables Disabled layers can lay over hub
 	color = "white"
 	var/obj/effect/node/machinery_node
+	var/obj/effect/node/layer1/cable_node_1
+	var/obj/effect/node/layer2/cable_node_2
+	var/obj/effect/node/layer3/cable_node_3
 
 /obj/effect/node
 	icon = 'icons/obj/power_cond/layer_cable.dmi'
 	icon_state = "l2-noconnection"
 	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER
 	color = "black"
+
+/obj/effect/node/layer1
+	color = "red"
+	icon_state = "l1-1-2-4-8-node"
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER|VIS_UNDERLAY
+
+/obj/effect/node/layer2
+	color = "yellow"
+	icon_state = "l2-1-2-4-8-node"
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER|VIS_UNDERLAY
+
+/obj/effect/node/layer3
+	color = "blue"
+	icon_state = "l4-1-2-4-8-node"
+	vis_flags = VIS_INHERIT_ID|VIS_INHERIT_PLANE|VIS_INHERIT_LAYER|VIS_UNDERLAY
 
 /obj/structure/cable/multilayer/update_icon_state()
 	return
@@ -615,13 +633,30 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	var/G = 50
 	var/B = 50
 
-	R += cable_layer&CABLE_LAYER_1?150:0
-	G += cable_layer&CABLE_LAYER_2?150:0
-	B += cable_layer&CABLE_LAYER_3?150:0
+	R += cable_layer & CABLE_LAYER_1 ? 150:0
+	G += cable_layer & CABLE_LAYER_2 ? 150:0
+	B += cable_layer & CABLE_LAYER_3 ? 150:0
 
 	color = rgb(R, G, B)
 
 	machinery_node?.alpha = machinery_layer & MACHINERY_LAYER_1 ? 255 : 0
+
+	//var/list/obj/node = list()
+	//var/separated_linked_dir = 0
+	
+	/*if(cable_layer & CABLE_LAYER_1)
+		cable_node_1.alpha = 255
+		node = get_cable_connections(linked_dirs, CABLE_LAYER_1)
+		for(var/obj/target_node)
+
+	else
+		cable_node_1.alpha = 0*/
+	
+	cable_node_1?.alpha = cable_layer & CABLE_LAYER_1 ? 255 : 0
+
+	cable_node_2?.alpha = cable_layer & CABLE_LAYER_2 ? 255 : 0
+
+	cable_node_3?.alpha = cable_layer & CABLE_LAYER_3 ? 255 : 0
 
 	return ..()
 
@@ -637,10 +672,19 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	
 	machinery_node = new /obj/effect/node()
 	vis_contents += machinery_node
+	cable_node_1 = new /obj/effect/node/layer1()
+	vis_contents += cable_node_1
+	cable_node_2 = new /obj/effect/node/layer2()
+	vis_contents += cable_node_2
+	cable_node_3 = new /obj/effect/node/layer3()
+	vis_contents += cable_node_3
 	update_icon()
 
 /obj/structure/cable/multilayer/Destroy()					// called when a cable is deleted
-	QDEL_NULL(machinery_node) 
+	QDEL_NULL(machinery_node)
+	QDEL_NULL(cable_node_1)
+	QDEL_NULL(cable_node_2)
+	QDEL_NULL(cable_node_3) 
 	return ..()									// then go ahead and delete the cable
 
 /obj/structure/cable/multilayer/examine(mob/user)
@@ -712,15 +756,15 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 	to_chat(user, "<span class='warning'>You pust reset button.</span>")
 	addtimer(CALLBACK(src, .proc/Reload), 10, TIMER_UNIQUE) //spam protect
 
-/obj/structure/cable/multilayer/get_cable_connections(powernetless_only)
+/obj/structure/cable/multilayer/get_cable_connections(link_dirs = linked_dirs, check_layer = cable_layer)
 	. = list()
 	var/turf/T = get_turf(src)
 	for(var/check_dir in GLOB.cardinals)
-		if(linked_dirs & check_dir)
+		if(link_dirs & check_dir)
 			T = get_step(src, check_dir)
 			for(var/obj/structure/cable/C in T)
 				if(istype(C,src))
 					continue
-				if(cable_layer & C.cable_layer)
+				if(check_layer & C.cable_layer)
 					. += C
 
