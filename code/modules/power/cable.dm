@@ -767,3 +767,4 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list(new/datum/stack_recipe("cable restrain
 					continue
 				if(check_layer & C.cable_layer)
 					. += C
+
