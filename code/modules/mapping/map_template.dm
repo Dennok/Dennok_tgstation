@@ -46,14 +46,15 @@
 				continue
 			if(istype(A, /obj/machinery/atmospherics))
 				atmos_machines += A
+
 	for(var/L in border)
 		var/turf/T = L
 		T.air_update_turf(TRUE) //calculate adjacent turfs along the border to prevent runtimes
 
 	SSmapping.reg_in_areas_in_z(areas)
-	SSatoms.InitializeAtoms(atoms)
+	SSatoms.InitializeAtoms(atoms, TRUE) // TRUE forbids CHECK_TICK, CHECK_TICK create runtime errors on runtime map loading 
 	SSmachines.setup_template_powernets(cables)
-	SSair.setup_template_machinery(atmos_machines)
+	SSair.setup_template_machinery(atmos_machines, TRUE) // TRUE forbids CHECK_TICK, CHECK_TICK create runtime errors on runtime map loading 
 
 /datum/map_template/proc/load_new_z()
 	var/x = round((world.maxx - width)/2)
