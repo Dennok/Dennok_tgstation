@@ -146,7 +146,7 @@
 	adjacencies = reverse_ndir(adjacencies)
 	if(adjacencies == NONE)
 		return
-	var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE)
+	var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER-0.1, plane = FLOOR_PLANE)
 	var/list/U = list(underlay_appearance)
 	if(fixed_underlay)
 		if(fixed_underlay["space"])
