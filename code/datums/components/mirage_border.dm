@@ -40,3 +40,4 @@
 	name = "Mirage holder"
 	anchored = TRUE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_HIDE
