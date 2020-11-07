@@ -55,9 +55,8 @@
 				atmos_machines += A
 
 	SSmapping.reg_in_areas_in_z(areas)
-	SSatoms.InitializeAtoms(areas + turfs + atoms)
-	// NOTE, now that Initialize and LateInitialize run correctly, do we really
-	// need these two below?
+	SSatoms.InitializeAtoms(turfs)
+	SSatoms.InitializeAtoms(atoms)
 	SSmachines.setup_template_powernets(cables)
 	SSair.setup_template_machinery(atmos_machines)
 
