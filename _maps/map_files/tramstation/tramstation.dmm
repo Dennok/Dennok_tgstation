@@ -1352,7 +1352,8 @@
 /area/service/library)
 "aeR" = (
 /obj/machinery/button/tram{
-	id = "middle_part"
+	id = "middle_part",
+	tram_id = "Main_Tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/center)
@@ -5598,7 +5599,8 @@
 	},
 /obj/effect/landmark/tram/middle_part,
 /obj/structure/industrial_lift/tram/central{
-	icon_state = "titanium"
+	icon_state = "titanium";
+	id = "Main_Train"
 	},
 /obj/machinery/computer/tram_controls,
 /turf/open/floor/vault,
@@ -48211,7 +48213,8 @@
 /area/science/xenobiology)
 "oDr" = (
 /obj/machinery/button/tram{
-	id = "right_part"
+	id = "right_part",
+	tram_id = "Main_Tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/right)
@@ -56981,7 +56984,8 @@
 /area/science/xenobiology)
 "scg" = (
 /obj/machinery/button/tram{
-	id = "left_part"
+	id = "left_part",
+	tram_id = "Main_Tram"
 	},
 /turf/closed/wall,
 /area/hallway/primary/tram/left)

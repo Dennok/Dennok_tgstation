@@ -345,10 +345,12 @@
 	device_type = /obj/item/assembly/control/tram
 	req_access = list()
 	id = 1
+	var/tram_id
 
 /obj/machinery/button/tram/setup_device()
 	var/obj/item/assembly/control/tram/tram_device = device
-	tram_device.initial_id = id
+	tram_device.to_where_id = id
+	tram_device.tram_id = tram_id
 	. = ..()
 
 /obj/machinery/button/tram/examine(mob/user)
