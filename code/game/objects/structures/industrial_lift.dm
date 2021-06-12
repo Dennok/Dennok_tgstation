@@ -3,18 +3,26 @@
 #define LOCKED 1
 #define UNLOCKED 0
 
+GLOBAL_LIST_EMPTY(assoc_lifts)//list of {id = lift_master}
+
 ///Collect and command
 /datum/lift_master
 	var/list/lift_platforms
+	var/id
+	var/controls_locked
 
 /datum/lift_master/Destroy()
+	GLOB.assoc_lifts.Remove(id)
 	for(var/l in lift_platforms)
 		var/obj/structure/industrial_lift/lift_platform = l
 		lift_platform.lift_master_datum = null
 	lift_platforms = null
 	return ..()
 
-/datum/lift_master/New(obj/structure/industrial_lift/lift_platform)
+/datum/lift_master/New(obj/structure/industrial_lift/lift_platform, new_id)
+	if(new_id)
+		id = new_id
+		GLOB.assoc_lifts[id] = src
 	Rebuild_lift_plaform(lift_platform)
 
 /datum/lift_master/proc/add_lift_platforms(obj/structure/industrial_lift/new_lift_platform)
@@ -127,11 +135,11 @@
  * Sets all lift parts's controls_locked variable. Used to prevent moving mid movement, or cooldowns.
  */
 /datum/lift_master/proc/set_controls(state)
+	controls_locked = state
 	for(var/l in lift_platforms)
 		var/obj/structure/industrial_lift/lift_platform = l
 		lift_platform.controls_locked = state
 
-GLOBAL_LIST_EMPTY(lifts)
 /obj/structure/industrial_lift
 	name = "lift platform"
 	desc = "A lightweight lift platform. It moves up and down."
@@ -155,9 +163,6 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/list/atom/movable/lift_load //things to move
 	var/datum/lift_master/lift_master_datum    //control from
 
-/obj/structure/industrial_lift/New()
-	GLOB.lifts.Add(src)
-	..()
 
 /obj/structure/industrial_lift/Initialize(mapload)
 	. = ..()
@@ -169,8 +174,8 @@ GLOBAL_LIST_EMPTY(lifts)
 	AddElement(/datum/element/connect_loc, src, loc_connections)
 	RegisterSignal(src, COMSIG_MOVABLE_BUMP, .proc/GracefullyBreak)
 
-	if(!lift_master_datum)
-		lift_master_datum = new(src)
+	if(!lift_master_datum && id)
+		lift_master_datum = new(src, id)
 
 /obj/structure/industrial_lift/proc/UncrossedRemoveItemFromLift(datum/source, atom/movable/potential_rider)
 	SIGNAL_HANDLER
@@ -330,7 +335,6 @@ GLOBAL_LIST_EMPTY(lifts)
 		user.visible_message("<span class='notice'>[user] moves the lift downwards.</span>", "<span class='notice'>You move the lift downwards.</span>")
 
 /obj/structure/industrial_lift/Destroy()
-	GLOB.lifts.Remove(src)
 	QDEL_NULL(lift_master_datum)
 	var/list/border_lift_platforms = lift_platform_expansion()
 	moveToNullspace()

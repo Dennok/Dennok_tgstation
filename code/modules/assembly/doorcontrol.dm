@@ -184,34 +184,29 @@
 	if(cooldown)
 		return
 	cooldown = TRUE
-	var/obj/structure/industrial_lift/lift
-	for(var/l in GLOB.lifts)
-		var/obj/structure/industrial_lift/possible_lift = l
-		if(possible_lift.id != id || possible_lift.z == z || possible_lift.controls_locked)
-			continue
-		lift = possible_lift
-		break
-	if(!lift)
+	var/datum/lift_master/lift_master_datum = GLOB.assoc_lifts[id]
+	var/obj/structure/industrial_lift/lift_platform = lift_master_datum.lift_platforms[1]
+	if(!lift_master_datum || !lift_platform || lift_platform.z == z || lift_master_datum.controls_locked)
 		addtimer(VARSET_CALLBACK(src, cooldown, FALSE), 2 SECONDS)
 		return
-	lift.visible_message("<span class='notice'>[src] clinks and whirrs into automated motion, locking controls.</span")
-	lift.lift_master_datum.set_controls(LOCKED)
+	lift_platform.visible_message("<span class='notice'>[src] clinks and whirrs into automated motion, locking controls.</span")
+	lift_master_datum.set_controls(LOCKED)
 	///The z level to which the elevator should travel
 	var/targetZ = (abs(loc.z)) //The target Z (where the elevator should move to) is not our z level (we are just some assembly in nullspace) but actually the Z level of whatever we are contained in (e.g. elevator button)
 	///The amount of z levels between the our and targetZ
-	var/difference = abs(targetZ - lift.z)
+	var/difference = abs(targetZ - lift_platform.z)
 	///Direction (up/down) needed to go to reach targetZ
-	var/direction = lift.z < targetZ ? UP : DOWN
+	var/direction = lift_platform.z < targetZ ? UP : DOWN
 	///How long it will/should take us to reach the target Z level
 	var/travel_duration = FLOOR_TRAVEL_TIME * difference //100 / 2 floors up = 50 seconds on every floor, will always reach destination in the same time
 	addtimer(VARSET_CALLBACK(src, cooldown, FALSE), travel_duration)
 	for(var/i in 1 to difference)
 		sleep(FLOOR_TRAVEL_TIME)//hey this should be alright... right?
-		if(QDELETED(lift) || QDELETED(src))//elevator control or button gone = don't go up anymore
+		if(QDELETED(lift_master_datum) || QDELETED(src))//elevator control or button gone = don't go up anymore
 			return
-		lift.lift_master_datum.MoveLift(direction, null)
-	lift.visible_message("<span class='notice'>[src] clicks, ready to be manually operated again.</span")
-	lift.lift_master_datum.set_controls(UNLOCKED)
+		lift_master_datum.MoveLift(direction, null)
+	lift_platform.visible_message("<span class='notice'>[src] clicks, ready to be manually operated again.</span")
+	lift_master_datum.set_controls(UNLOCKED)
 
 #undef FLOOR_TRAVEL_TIME
 
