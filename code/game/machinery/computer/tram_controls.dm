@@ -23,7 +23,7 @@
  * Locates tram parts in the lift global list after everything is done.
  */
 /obj/machinery/computer/tram_controls/proc/find_tram()
-	var/obj/structure/industrial_lift/tram/central/tram_loc = locate() in GLOB.lifts
+	var/obj/structure/industrial_lift/tram/central/tram_loc = locate() in SStramprocess.tram_centrals
 	tram_part = tram_loc //possibly setting to something null, that's fine, but
 	tram_part.find_our_location()
 

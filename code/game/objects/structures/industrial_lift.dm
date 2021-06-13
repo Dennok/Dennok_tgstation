@@ -6,15 +6,22 @@
 ///Collect and command
 /datum/lift_master
 	var/list/lift_platforms
+	var/id
+	var/controls_locked
 
 /datum/lift_master/Destroy()
+	SStramprocess.assoc_lifts.Remove(id)
 	for(var/l in lift_platforms)
 		var/obj/structure/industrial_lift/lift_platform = l
 		lift_platform.lift_master_datum = null
 	lift_platforms = null
 	return ..()
 
-/datum/lift_master/New(obj/structure/industrial_lift/lift_platform)
+/datum/lift_master/New(obj/structure/industrial_lift/lift_platform, new_id)
+	if(new_id)
+		id = new_id
+	if(id)
+		SStramprocess.assoc_lifts[id] = src
 	Rebuild_lift_plaform(lift_platform)
 
 /datum/lift_master/proc/add_lift_platforms(obj/structure/industrial_lift/new_lift_platform)
@@ -46,6 +53,7 @@
 					var/obj/structure/industrial_lift/lift_platform = p
 					add_lift_platforms(lift_platform)
 					possible_expansions |= lift_platform
+
 			possible_expansions -= borderline
 
 /**
@@ -127,11 +135,11 @@
  * Sets all lift parts's controls_locked variable. Used to prevent moving mid movement, or cooldowns.
  */
 /datum/lift_master/proc/set_controls(state)
+	controls_locked = state
 	for(var/l in lift_platforms)
 		var/obj/structure/industrial_lift/lift_platform = l
 		lift_platform.controls_locked = state
 
-GLOBAL_LIST_EMPTY(lifts)
 /obj/structure/industrial_lift
 	name = "lift platform"
 	desc = "A lightweight lift platform. It moves up and down."
@@ -155,9 +163,6 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/list/atom/movable/lift_load //things to move
 	var/datum/lift_master/lift_master_datum    //control from
 
-/obj/structure/industrial_lift/New()
-	GLOB.lifts.Add(src)
-	..()
 
 /obj/structure/industrial_lift/Initialize(mapload)
 	. = ..()
@@ -170,7 +175,7 @@ GLOBAL_LIST_EMPTY(lifts)
 	RegisterSignal(src, COMSIG_MOVABLE_BUMP, .proc/GracefullyBreak)
 
 	if(!lift_master_datum)
-		lift_master_datum = new(src)
+		lift_master_datum = new(src, id)
 
 /obj/structure/industrial_lift/proc/UncrossedRemoveItemFromLift(datum/source, atom/movable/potential_rider)
 	SIGNAL_HANDLER
@@ -330,7 +335,6 @@ GLOBAL_LIST_EMPTY(lifts)
 		user.visible_message("<span class='notice'>[user] moves the lift downwards.</span>", "<span class='notice'>You move the lift downwards.</span>")
 
 /obj/structure/industrial_lift/Destroy()
-	GLOB.lifts.Remove(src)
 	QDEL_NULL(lift_master_datum)
 	var/list/border_lift_platforms = lift_platform_expansion()
 	moveToNullspace()
@@ -418,7 +422,11 @@ GLOBAL_LIST_EMPTY(lifts)
 
 /obj/structure/industrial_lift/tram/central/Initialize(mapload)
 	. = ..()
+	SStramprocess.tram_centrals.Add(src)
 	SStramprocess.can_fire = TRUE
+
+/obj/structure/industrial_lift/tram/central/Destroy(mapload)
+	. = ..()
 
 /obj/structure/industrial_lift/tram/LateInitialize()
 	. = ..()
@@ -436,7 +444,7 @@ GLOBAL_LIST_EMPTY(lifts)
  */
 /obj/structure/industrial_lift/tram/proc/find_our_location()
 	if(!from_where)
-		for(var/obj/effect/landmark/tram/our_location in GLOB.landmarks_list)
+		for(var/obj/effect/landmark/tram/our_location in SStramprocess.tram_landmarks)
 			if(our_location.destination_id == initial_id)
 				from_where = our_location
 				break
@@ -507,6 +515,16 @@ GLOBAL_LIST_EMPTY(lifts)
 	var/destination_id
 	///icons for the tgui console to list out for what is at this location
 	var/list/tgui_icons = list()
+
+/obj/effect/landmark/tram/Initialize(mapload)
+	. = ..()
+	if(!destination_id && !mapload)
+		CRASH("Tram landmark witn null destination_id on mapload detected on [x] [y] [z], check your map!")
+	SStramprocess.tram_landmarks.Add(src)
+
+/obj/effect/landmark/tram/Destroy()
+	SStramprocess.tram_landmarks.Remove(src)
+	return ..()
 
 /obj/effect/landmark/tram/left_part
 	name = "West Wing"
